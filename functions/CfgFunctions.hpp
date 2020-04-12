@@ -10,5 +10,16 @@ class cfgFunctions
 			class revealBase {};
 			class teleportToBase {};
 		};
+		class misc
+		{
+			class arrayConcat {};
+		}
+		class undercover
+		{
+			class looksCivillian {};
+			class makeUndercover {};
+			class shouldGoOvert {};
+			class unitLastSeen {};
+		};
 	};
 };

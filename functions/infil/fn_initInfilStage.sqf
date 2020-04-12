@@ -1,5 +1,8 @@
 if(!isServer) exitWith {""};
 
+createMarker ["respawn_west", getMarkerPos "infil_bay"];
+"respawn_west" setMarkerType "Empty";
+
 setDate [2035,07,13,2,00];
 0 setFog [0.13,0.07,75];
 
