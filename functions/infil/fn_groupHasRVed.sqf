@@ -9,4 +9,7 @@ sleep 6;
 sleep 10;
 setDate [2035,07,13,6,00];
 0 setFog [0,0,0];
+
+{ _x setMarkerAlpha 0} forEach (getMissionLayerEntities "infil" select 1);
+"base_marker" setMarkerAlpha 1;
 [] remoteExec ["mbs_fnc_revealBase", 0, true];
