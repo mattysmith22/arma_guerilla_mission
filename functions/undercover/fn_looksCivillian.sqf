@@ -1,6 +1,6 @@
 params ["_unit"];
 
-if !(primaryWeapon player == "" || secondaryWeapon player == "" || handgunWeapon player == "") exitWith {[false, "You are holding a weapon"]};
+if !(primaryWeapon player == "" && secondaryWeapon player == "" && handgunWeapon player == "") exitWith {[false, "You are holding a weapon"]};
 
 if !(vest _unit == "") exitWith  {[false, format ["You are wearing a vest: %1", vest _unit]]};
 

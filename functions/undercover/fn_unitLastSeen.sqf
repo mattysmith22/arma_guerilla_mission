@@ -6,7 +6,7 @@ private _enemySides = _allSides; //select {[_playerSide, _x]  call BIS_fnc_sideI
 
 private _infantry = (getPos _unit) nearEntities ["Man", _radius];
 private _vehicles = (getPos _unit) nearEntities [["Air", "Ship", "LandVehicle"], _radius];
-private _vehicleCrew = _vehicles apply {crew _x} ;
+private _vehicleCrew = (_vehicles apply {crew _x}) call mbs_fnc_arrayConcat ;
 _infantry append _vehicleCrew;
 _vehicleCrew = nil;
 _vehicles = nil;
