@@ -7408,7 +7408,7 @@ class Mission
 				{
 					dataType="Marker";
 					position[]={5891.7539,239.713,19872.609};
-					name="marker_7";
+					name="enemy_outpost";
 					text="Outpost";
 					type="n_installation";
 					id=67;
