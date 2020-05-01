@@ -13,6 +13,10 @@ setDate [2035,07,13,2,00];
 
 private _enemyInf = _objects select {side _x == independent};
 {
+	_x unassignItem "NVGoggles_INDEP";
+	_x removeItem "NVGoggles_INDEP";
+	_x removePrimaryWeaponItem "acc_pointer_IR";
+	_x addPrimaryWeaponItem "acc_flashlight";
 	_x enableGunLights "ForceOn";
 } forEach _enemyInf;
 

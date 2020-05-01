@@ -1,1 +1,1 @@
-stage_1_fob_reinforcement addWaypoint (getMarkerPos "enemy_outpost");
+group driver stage_1_fob_reinforcement addWaypoint [(getMarkerPos "enemy_outpost"), 4];

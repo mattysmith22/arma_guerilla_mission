@@ -31,6 +31,10 @@ if (isServer) then {
 	_infilCompleteTrigger setTriggerArea [100, 100, 0, false, 100];
 	_infilCompleteTrigger setTriggerActivation ["WEST", "PRESENT", false];
 	_infilCompleteTrigger setTriggerStatements ["this", "[] call mbs_fnc_stage1TeamInfil;", ""];
+
+	private _officerKilledTrigger = createTrigger ["EmptyDetector", getMarkerPos "marker_oreokastro", false];
+	_officerKilledTrigger setTriggerStatements ["!alive stage_1_officer", "['stage_1_assassination', 'SUCCEEDED'] call BIS_fnc_taskSetState;", ""];
+
 };
 
 if (player == player_controller) then {
@@ -44,12 +48,23 @@ if (player == player_controller) then {
 	}];
 	mission_controller addAction ["Call in FOB reinforcements", {
 		params ["_target", "_caller", "_actionID", "_arguments"];
-		private _sure = ["Are you sure you would like to start the patrol?", "Are you sure?", true, true] call BIS_fnc_guiMessage;
+		private _sure = ["Are you sure you would like to call in reinforcements?", "Are you sure?", true, true] call BIS_fnc_guiMessage;
 		if _sure then {
 			[] call mbs_fnc_stage1ReinforcementsStart;
 			if(!isServer) then {
 				[] remoteExec ["mbs_fnc_stage1ReinforcementsStart", 2];
-			}
+			};
+			mission_controller removeAction _actionID;
+		};
+	}];
+	mission_controller addAction ["Call RTB", {
+		params ["_target", "_caller", "_actionID", "_arguments"];
+		private _sure = ["Are you sure you would like to call RTB?", "Are you sure?", true, true] call BIS_fnc_guiMessage;
+		if _sure then {
+			[] call mbs_fnc_stage1CallRTB;
+			if(!isServer) then {
+				[] remoteExec ["mbs_fnc_stage1CallRTB", 2];
+			};
 			mission_controller removeAction _actionID;
 		};
 	}];
